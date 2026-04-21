@@ -1,0 +1,4 @@
+name: Look Up Word — Missing Query Param (400)
+description: Omits the required `q` param — expects a 400 with a nudge to add ?q=yourword.
+method: GET
+url: https://yiddish.fyi/api/word

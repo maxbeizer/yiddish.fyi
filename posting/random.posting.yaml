@@ -1,0 +1,4 @@
+name: Get Random Word
+description: Returns a random Yiddish word and its definition.
+method: GET
+url: https://yiddish.fyi/api/random

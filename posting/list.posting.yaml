@@ -1,0 +1,4 @@
+name: List All Words
+description: Returns all Yiddish words with their definitions and a total count.
+method: GET
+url: https://yiddish.fyi/api/list

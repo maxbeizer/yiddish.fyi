@@ -1,0 +1,4 @@
+name: API Index
+description: Returns all available endpoints and the total word count.
+method: GET
+url: https://yiddish.fyi/api

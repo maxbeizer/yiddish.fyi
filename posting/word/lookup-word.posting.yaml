@@ -1,0 +1,7 @@
+name: Look Up a Word
+description: Returns the definition for a specific Yiddish word. Change the value of `q` to look up a different word.
+method: GET
+url: https://yiddish.fyi/api/word
+params:
+- name: q
+  value: kvetch

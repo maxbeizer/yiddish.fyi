@@ -1,0 +1,7 @@
+name: Look Up Unknown Word (404)
+description: Word not in the dictionary — expects a 404 with a Yiddish-flavored error.
+method: GET
+url: https://yiddish.fyi/api/word
+params:
+- name: q
+  value: blorp

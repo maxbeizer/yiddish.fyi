@@ -1,0 +1,4 @@
+name: Unknown Route (404)
+description: Hits a non-existent route — expects the default Oy vey 404 response.
+method: GET
+url: https://yiddish.fyi/api/doesnotexist
