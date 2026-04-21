@@ -1,12 +1,12 @@
 # yiddish.fyi
 
-A free, simple API for Yiddish words and definitions.
+Oy, you found it! The one and only free Yiddish word API — no auth, no rate limits, no tsuris.
 
 🌐 **Live:** https://yiddish.fyi  
 📖 **API Docs:** https://yiddish.fyi  
 🐙 **GitHub:** https://github.com/maxbeizer/yiddish.fyi
 
-## API Endpoints
+## API Endpoints — nu, let's get to it
 
 ### Random Word
 ```bash
@@ -36,26 +36,26 @@ curl https://yiddish.fyi/api/list
 ```
 ```json
 {
-  "count": 49,
+  "count": "<the current count, always up to date>",
   "words": { ... }
 }
 ```
 
-## Features
+## Features — what's not to like?
 
-- ✅ **CORS enabled** - works from browsers
-- ✅ **No authentication** - just hit the endpoint
-- ✅ **No rate limits** - (within reason)
-- ✅ **Free forever** - runs on Cloudflare Workers
-- ✅ **Zero dependencies** - pure vanilla JS
+- ✅ **CORS enabled** — works from browsers, no mishegoss
+- ✅ **No authentication** — just hit the endpoint already
+- ✅ **No rate limits** — we're not that kind of meshuggeneh
+- ✅ **Free forever** — runs on Cloudflare Workers
+- ✅ **Zero dependencies** — pure vanilla JS, as God intended
 
 ## Dataset
 
-Currently 49 common Yiddish words (bagel, kvetch, mensch, oy vey, etc.)
+A growing collection of common Yiddish words (bagel, kvetch, mensch, oy vey, etc.). The count is always current — check `/api/list` if you want the real number.
 
-Want to add more? Submit a PR!
+Got a word we're missing? We'd kvell if you submitted a PR!
 
-## Deployment
+## Deployment — you want to run this yourself? Chutzpah! We love it.
 
 ### Cloudflare Worker (API)
 
@@ -92,12 +92,12 @@ wrangler dev worker.js
 
 ## Cost
 
-$0/month on Cloudflare Workers free tier (100k requests/day)
+$0/month on Cloudflare Workers free tier (100k requests/day). A real mitzvah.
 
 ## License
 
-Public domain / CC0. Use it however you want.
+Public domain / CC0. Use it however you want — farbreng!
 
 ---
 
-Made with 💖 by [Max](https://maxbeizer.com)
+Made with 💖 and a little chutzpah by [Max](https://maxbeizer.com)

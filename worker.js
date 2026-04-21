@@ -89,7 +89,7 @@ export default {
       const query = url.searchParams.get("q");
       if (!query) {
         return new Response(
-          JSON.stringify({ error: "Missing query parameter 'q'" }),
+          JSON.stringify({ error: "Nu? You forgot to tell me which word!", hint: "Add ?q=yourword to the URL, already." }),
           { status: 400, headers: corsHeaders }
         );
       }
@@ -105,7 +105,7 @@ export default {
         );
       } else {
         return new Response(
-          JSON.stringify({ error: "Word not found" }),
+          JSON.stringify({ error: "Feh! Never heard of it.", hint: "Try /api/list to see all known words, or submit a PR to add yours!" }),
           { status: 404, headers: corsHeaders }
         );
       }
@@ -139,7 +139,7 @@ export default {
 
     // Default: 404
     return new Response(
-      JSON.stringify({ error: "Not found" }),
+      JSON.stringify({ error: "Oy vey! That route doesn't exist.", hint: "Try /api/random for a word, or /api to see all endpoints." }),
       { status: 404, headers: corsHeaders }
     );
   }
