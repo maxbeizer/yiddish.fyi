@@ -56,29 +56,7 @@ Got a word we're missing? We'd kvell if you submitted a PR!
 
 ## Deployment — you want to run this yourself? Chutzpah! We love it.
 
-### Cloudflare Worker (API)
-
-1. Install Wrangler CLI (optional, can deploy via dashboard):
-```bash
-npm install -g wrangler
-```
-
-2. Deploy:
-```bash
-wrangler deploy worker.js
-```
-
-Or deploy via Cloudflare dashboard:
-- Workers & Pages → Create Worker → paste `worker.js` code
-
-### Cloudflare Pages (Docs Site)
-
-1. Connect this repo to Cloudflare Pages
-2. Build settings:
-   - Framework: None
-   - Build command: (empty)
-   - Build output: `/`
-3. Custom domain: `yiddish.fyi`
+Pushing to `main` deploys automatically via Cloudflare Pages CI/CD. That's it. No commands, no mishegoss.
 
 ## Local Development
 
