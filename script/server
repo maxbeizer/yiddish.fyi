@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# script/server: Start the local development server.
+# Runs the Cloudflare Worker via Wrangler (no global install required).
+# https://github.com/github/scripts-to-rule-them-all
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+echo "==> Starting Wrangler dev server..."
+npx wrangler dev worker.js
