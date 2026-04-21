@@ -2,9 +2,9 @@
 
 Oy, you found it! The one and only free Yiddish word API — no auth, no rate limits, no tsuris.
 
-🌐 **Live:** https://yiddish.fyi
-📖 **API Docs:** https://yiddish.fyi
-🐙 **GitHub:** https://github.com/maxbeizer/yiddish.fyi
+- 🌐 **Live:** https://yiddish.fyi
+- 📖 **API Docs:** https://yiddish.fyi
+- 🐙 **GitHub:** https://github.com/maxbeizer/yiddish.fyi
 
 ## API Endpoints — nu, let's get to it
 
