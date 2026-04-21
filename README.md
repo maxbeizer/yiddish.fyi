@@ -2,8 +2,8 @@
 
 Oy, you found it! The one and only free Yiddish word API — no auth, no rate limits, no tsuris.
 
-🌐 **Live:** https://yiddish.fyi  
-📖 **API Docs:** https://yiddish.fyi  
+🌐 **Live:** https://yiddish.fyi
+📖 **API Docs:** https://yiddish.fyi
 🐙 **GitHub:** https://github.com/maxbeizer/yiddish.fyi
 
 ## API Endpoints — nu, let's get to it
@@ -46,7 +46,6 @@ curl https://yiddish.fyi/api/list
 - ✅ **CORS enabled** — works from browsers, no mishegoss
 - ✅ **No authentication** — just hit the endpoint already
 - ✅ **No rate limits** — we're not that kind of meshuggeneh
-- ✅ **Free forever** — runs on Cloudflare Workers
 - ✅ **Zero dependencies** — pure vanilla JS, as God intended
 
 ## Dataset
@@ -89,10 +88,6 @@ To test the Worker locally:
 ```bash
 wrangler dev worker.js
 ```
-
-## Cost
-
-$0/month on Cloudflare Workers free tier (100k requests/day). A real mitzvah.
 
 ## License
 
