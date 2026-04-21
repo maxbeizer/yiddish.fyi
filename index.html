@@ -3,216 +3,394 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yiddish.fyi - A Free Yiddish Word API</title>
+    <title>yiddish.fyi — A Free Yiddish Word API</title>
     <meta name="description" content="A simple, free API for Yiddish words and definitions. No auth, no rate limits, just oy vey.">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #faf9f6;
+            --card: #ffffff;
+            --border: #e5e2d8;
+            --primary: #4f46e5;
+            --primary-light: #ede9fe;
+            --text: #1a1917;
+            --muted: #6b7280;
+            --code-bg: #1e1e2e;
+            --code-text: #cdd6f4;
+            --green: #10b981;
+            --radius: 8px;
         }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Georgia', serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            color: #2c2c2c;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 2rem 1rem;
         }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 2rem;
             background: white;
-            padding: 3rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            color: #667eea;
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.02em;
         }
-        
-        .tagline {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-            font-style: italic;
+
+        .header-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
         }
-        
-        .word-of-the-day {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-left: 4px solid #667eea;
-            margin: 2rem 0;
-        }
-        
-        .word {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-        
-        .definition {
-            font-size: 1.2rem;
-            color: #555;
-        }
-        
-        h2 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-        
-        .endpoint {
-            background: #2d3748;
-            color: #f7fafc;
-            padding: 1rem;
-            border-radius: 4px;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-        }
-        
-        .endpoint code {
-            color: #81e6d9;
-        }
-        
-        .try-button {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
+
+        .header-links a {
+            color: var(--muted);
             text-decoration: none;
-            margin-top: 1rem;
-            transition: background 0.3s;
         }
-        
-        .try-button:hover {
-            background: #764ba2;
+
+        .header-links a:hover { color: var(--primary); }
+
+        main {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
         }
-        
-        .example {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 4px;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin-bottom: 0.75rem;
+            line-height: 1.1;
         }
-        
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #ddd;
-            color: #666;
-            font-size: 0.9rem;
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
         }
-        
-        ul {
-            margin-left: 2rem;
+
+        .badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .word-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .word-card-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .word-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+
+        .definition-display {
+            font-size: 1.1rem;
+            color: #374151;
+        }
+
+        .refresh-btn {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0.4rem 0.75rem;
+            font-size: 0.8rem;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .refresh-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        h2 {
+            font-size: 1.375rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            margin-top: 2.5rem;
+            letter-spacing: -0.02em;
         }
-        
-        li {
+
+        .endpoint-block {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 1.25rem;
+        }
+
+        .endpoint-header {
+            padding: 0.875rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .method {
+            background: var(--green);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            letter-spacing: 0.05em;
+        }
+
+        .path {
+            font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .endpoint-body {
+            padding: 1.25rem;
+        }
+
+        .endpoint-desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 0.875rem;
+        }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius);
+            font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            line-height: 1.7;
+        }
+
+        .json-key { color: #89dceb; }
+        .json-str { color: #a6e3a1; }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
             margin-bottom: 0.5rem;
+        }
+
+        .feature {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-desc {
+            font-size: 0.825rem;
+            color: var(--muted);
+        }
+
+        .use-cases {
+            margin-left: 1.5rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .use-cases li { margin-bottom: 0.4rem; }
+
+        .cta {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .cta a { color: var(--primary); text-decoration: none; }
+        .cta a:hover { text-decoration: underline; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 1.75rem 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--muted);
+        }
+
+        footer a { color: var(--primary); text-decoration: none; }
+
+        @media (max-width: 600px) {
+            .features { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+            .path { font-size: 0.8rem; word-break: break-all; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>yiddish.fyi</h1>
-        <p class="tagline">A free API for Yiddish words. No auth, no rate limits, just oy vey.</p>
-        
-        <div class="word-of-the-day" id="word-container">
-            <div class="word" id="word">Loading...</div>
-            <div class="definition" id="definition"></div>
+    <header>
+        <span class="logo">yiddish.fyi</span>
+        <nav class="header-links">
+            <a href="/api">API</a>
+            <a href="https://github.com/maxbeizer/yiddish.fyi" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>A free Yiddish word API</h1>
+        <p class="tagline">No auth, no rate limits, no meshugoss. Just words.</p>
+        <div class="badges">
+            <span class="badge">CORS enabled</span>
+            <span class="badge">No auth required</span>
+            <span class="badge">Free forever</span>
+            <span class="badge">JSON</span>
         </div>
-        
-        <h2>📖 API Endpoints</h2>
-        
-        <h3>Random Word</h3>
-        <div class="endpoint">
-            GET <code>https://yiddish.fyi/api/random</code>
+
+        <div class="word-card">
+            <div class="word-card-label">Random word</div>
+            <div class="word-display" id="word">Loading…</div>
+            <div class="definition-display" id="definition"></div>
+            <button class="refresh-btn" onclick="loadWord()">↻ Another</button>
         </div>
-        <div class="example">
-            {<br>
-            &nbsp;&nbsp;"word": "kvetch",<br>
-            &nbsp;&nbsp;"definition": "to complain persistently"<br>
-            }
+
+        <h2>Endpoints</h2>
+
+        <div class="endpoint-block">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="path">https://yiddish.fyi/api/random</span>
+            </div>
+            <div class="endpoint-body">
+                <p class="endpoint-desc">Returns a random Yiddish word and its definition.</p>
+                <pre>{
+  <span class="json-key">"word"</span>: <span class="json-str">"kvetch"</span>,
+  <span class="json-key">"definition"</span>: <span class="json-str">"to complain persistently"</span>
+}</pre>
+            </div>
         </div>
-        
-        <h3>Look Up a Word</h3>
-        <div class="endpoint">
-            GET <code>https://yiddish.fyi/api/word?q=mensch</code>
+
+        <div class="endpoint-block">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="path">https://yiddish.fyi/api/word?q=mensch</span>
+            </div>
+            <div class="endpoint-body">
+                <p class="endpoint-desc">Look up a specific word. Case-insensitive.</p>
+                <pre>{
+  <span class="json-key">"word"</span>: <span class="json-str">"mensch"</span>,
+  <span class="json-key">"definition"</span>: <span class="json-str">"a person of integrity and honor"</span>
+}</pre>
+            </div>
         </div>
-        <div class="example">
-            {<br>
-            &nbsp;&nbsp;"word": "mensch",<br>
-            &nbsp;&nbsp;"definition": "a person of integrity and honor"<br>
-            }
+
+        <div class="endpoint-block">
+            <div class="endpoint-header">
+                <span class="method">GET</span>
+                <span class="path">https://yiddish.fyi/api/list</span>
+            </div>
+            <div class="endpoint-body">
+                <p class="endpoint-desc">Returns every word in the dataset.</p>
+                <pre>{
+  <span class="json-key">"count"</span>: 49,
+  <span class="json-key">"words"</span>: { <span class="json-str">…</span> }
+}</pre>
+            </div>
         </div>
-        
-        <h3>List All Words</h3>
-        <div class="endpoint">
-            GET <code>https://yiddish.fyi/api/list</code>
+
+        <h2>Features</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-title">CORS enabled</div>
+                <div class="feature-desc">Works directly from browser JavaScript, no proxy needed.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-title">No authentication</div>
+                <div class="feature-desc">Just hit the endpoint — no API keys, no sign-up.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-title">Cloudflare Workers</div>
+                <div class="feature-desc">Globally distributed, fast response times everywhere.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-title">Free forever</div>
+                <div class="feature-desc">Runs on Cloudflare's free tier. 100k requests/day.</div>
+            </div>
         </div>
-        <div class="example">
-            {<br>
-            &nbsp;&nbsp;"count": 49,<br>
-            &nbsp;&nbsp;"words": { ... }<br>
-            }
-        </div>
-        
-        <a href="https://yiddish.fyi/api/random" class="try-button" target="_blank">Try It Now →</a>
-        
-        <h2>🚀 Usage</h2>
-        <ul>
-            <li><strong>CORS enabled</strong> - works from browsers</li>
-            <li><strong>No authentication</strong> - just hit the endpoint</li>
-            <li><strong>No rate limits</strong> - (within reason, don't be a schmuck)</li>
-            <li><strong>Free forever</strong> - runs on Cloudflare Workers free tier</li>
-        </ul>
-        
-        <h2>💡 Use Cases</h2>
-        <ul>
+
+        <h2>Use cases</h2>
+        <ul class="use-cases">
             <li>Word-of-the-day widgets</li>
             <li>Home Assistant dashboards</li>
             <li>Tidbyt displays</li>
             <li>Learning apps</li>
             <li>Just for fun</li>
         </ul>
-        
-        <h2>📦 Current Dataset</h2>
-        <p>49 common Yiddish words (bagel, kvetch, mensch, oy vey, etc.)</p>
-        <p>Want to add more? <a href="https://github.com/maxbeizer/yiddish.fyi" target="_blank">Submit a PR on GitHub</a></p>
-        
-        <div class="footer">
-            <p>Made with 💖 by <a href="https://maxbeizer.com" target="_blank">Max</a></p>
-            <p style="margin-top: 0.5rem;">
-                <a href="https://github.com/maxbeizer/yiddish.fyi" target="_blank">GitHub</a>
-            </p>
-        </div>
-    </div>
-    
+
+        <p class="cta">
+            Want to add more words? <a href="https://github.com/maxbeizer/yiddish.fyi" target="_blank" rel="noopener noreferrer">Submit a PR on GitHub →</a>
+        </p>
+    </main>
+
+    <footer>
+        Made with 💙 by <a href="https://maxbeizer.com" target="_blank" rel="noopener noreferrer">Max</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/maxbeizer/yiddish.fyi" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </footer>
+
     <script>
-        // Fetch a random word on page load
-        fetch('https://yiddish.fyi/api/random')
-            .then(res => res.json())
-            .then(data => {
+        async function loadWord() {
+            try {
+                const res = await fetch('/api/random');
+                if (!res.ok) throw new Error(res.statusText);
+                const data = await res.json();
                 document.getElementById('word').textContent = data.word;
                 document.getElementById('definition').textContent = data.definition;
-            })
-            .catch(err => {
+            } catch {
                 document.getElementById('word').textContent = 'oy vey';
                 document.getElementById('definition').textContent = 'Something went wrong!';
-            });
+            }
+        }
+        loadWord();
     </script>
 </body>
 </html>
