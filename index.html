@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>yiddish.fyi — A Free Yiddish Word API</title>
     <meta name="description" content="A simple, free API for Yiddish words and definitions. No auth, no rate limits, just oy vey.">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yiddish.fyi/">
+    <meta property="og:title" content="yiddish.fyi — A Free Yiddish Word API">
+    <meta property="og:description" content="A simple, free API for Yiddish words and definitions. No auth, no rate limits, just oy vey.">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="yiddish.fyi — A Free Yiddish Word API">
+    <meta name="twitter:description" content="A simple, free API for Yiddish words and definitions. No auth, no rate limits, just oy vey.">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://yiddish.fyi/">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫶</text></svg>">
     <style>
         :root {
             --bg: #faf9f6;
@@ -281,7 +294,7 @@
 <body>
     <header>
         <span class="logo">yiddish.fyi</span>
-        <nav class="header-links">
+        <nav class="header-links" aria-label="Site navigation">
             <a href="/api">API</a>
             <a href="https://github.com/maxbeizer/yiddish.fyi" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
@@ -299,9 +312,9 @@
 
         <div class="word-card">
             <div class="word-card-label">Word of the moment</div>
-            <div class="word-display" id="word">Loading…</div>
+            <div class="word-display" id="word" aria-live="polite" aria-atomic="true">Loading…</div>
             <div class="definition-display" id="definition"></div>
-            <button class="refresh-btn" onclick="loadWord()">↻ Nu? Another one.</button>
+            <button class="refresh-btn" onclick="loadWord()" aria-label="Load another word"><span aria-hidden="true">↻</span> Nu? Another one.</button>
         </div>
 
         <h2>Endpoints</h2>
