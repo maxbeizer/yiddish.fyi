@@ -84,9 +84,14 @@ Or deploy via Cloudflare dashboard:
 
 Open `index.html` in a browser. The API endpoints will hit the live Worker.
 
-To test the Worker locally:
+To test the Worker locally (no install required):
 ```bash
-wrangler dev worker.js
+script/server
+```
+
+Or directly with npx:
+```bash
+npx wrangler dev worker.js
 ```
 
 ## License
