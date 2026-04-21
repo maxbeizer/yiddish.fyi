@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# script/test — run the Posting HTTP collection against the API
+# See: https://github.com/github/scripts-to-rule-them-all
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+if ! command -v posting &>/dev/null; then
+  echo "posting is not installed. Install it with: pip install posting" >&2
+  exit 1
+fi
+
+exec posting --collection posting/
