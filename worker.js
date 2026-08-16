@@ -160,7 +160,15 @@ const WORDS = {
   "oysgepucht": "overdressed, gaudy",
   "tsukneplekh": "worries, anxieties",
   "shtetlishe": "characteristic of a small village",
-  "meshpokhe": "extended family"
+  "meshpokhe": "extended family",
+  "beshert": "destined, fated; often used to describe a soulmate",
+  "shpilkes": "anxious restlessness; pins-and-needles energy; unable to sit still",
+  "luftmensch": "an impractical dreamer untethered to reality; literally 'air person'",
+  "farkakt": "thoroughly messed up, ruined; stronger than dreck",
+  "chazzer": "a greedy pig; someone gluttonous or selfish",
+  "macher": "a big shot, a doer; someone who makes things happen",
+  "farblonjet": "hopelessly lost or confused, wandering aimlessly",
+  "chutzpadik": "having chutzpah; audaciously bold (the adjective form English lacks)"
 };
 
 export default {
