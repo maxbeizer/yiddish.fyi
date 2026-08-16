@@ -15,7 +15,12 @@ curl https://yiddish.fyi/api/random
 ```json
 {
   "word": "kvetch",
-  "definition": "to complain persistently"
+  "definition": "to complain persistently",
+  "yiddish": "קוועטשן",
+  "pronunciation": "KVETCH",
+  "example": "She kvetched about the weather for the entire drive.",
+  "literal": null,
+  "entered_english": true
 }
 ```
 
@@ -26,7 +31,12 @@ curl https://yiddish.fyi/api/word?q=mensch
 ```json
 {
   "word": "mensch",
-  "definition": "a person of integrity and honor"
+  "definition": "a person of integrity and honor",
+  "yiddish": "מענטש",
+  "pronunciation": "MENSH",
+  "example": "He stayed late to help clean up — what a mensch.",
+  "literal": "person",
+  "entered_english": true
 }
 ```
 
@@ -36,7 +46,7 @@ curl https://yiddish.fyi/api/list
 ```
 ```json
 {
-  "count": "<the current count, always up to date>",
+  "count": 167,
   "words": { ... }
 }
 ```
@@ -50,7 +60,7 @@ curl https://yiddish.fyi/api/list
 
 ## Dataset
 
-A growing collection of common Yiddish words (bagel, kvetch, mensch, oy vey, etc.). The count is always current — check `/api/list` if you want the real number.
+167 Yiddish words with full rich data: original Yiddish script, pronunciation guide, example sentence, literal translation (where it differs meaningfully from usage), and an `entered_english` flag for words that crossed into mainstream English. Check `/api/list` for the live count.
 
 Got a word we're missing? We'd kvell if you submitted a PR!
 
