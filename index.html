@@ -324,10 +324,15 @@
                 <span class="path">https://yiddish.fyi/api/random</span>
             </div>
             <div class="endpoint-body">
-                <p class="endpoint-desc">Returns a random Yiddish word and its definition.</p>
+                <p class="endpoint-desc">Returns a random Yiddish word with full rich data.</p>
                 <pre>{
   <span class="json-key">"word"</span>: <span class="json-str">"kvetch"</span>,
-  <span class="json-key">"definition"</span>: <span class="json-str">"to complain persistently"</span>
+  <span class="json-key">"definition"</span>: <span class="json-str">"to complain persistently"</span>,
+  <span class="json-key">"yiddish"</span>: <span class="json-str">"קוועטשן"</span>,
+  <span class="json-key">"pronunciation"</span>: <span class="json-str">"KVETCH"</span>,
+  <span class="json-key">"example"</span>: <span class="json-str">"She kvetched about the weather for the entire drive."</span>,
+  <span class="json-key">"literal"</span>: null,
+  <span class="json-key">"entered_english"</span>: true
 }</pre>
             </div>
         </div>
@@ -341,7 +346,12 @@
                 <p class="endpoint-desc">Look up a specific word. Case-insensitive.</p>
                 <pre>{
   <span class="json-key">"word"</span>: <span class="json-str">"mensch"</span>,
-  <span class="json-key">"definition"</span>: <span class="json-str">"a person of integrity and honor"</span>
+  <span class="json-key">"definition"</span>: <span class="json-str">"a person of integrity and honor"</span>,
+  <span class="json-key">"yiddish"</span>: <span class="json-str">"מענטש"</span>,
+  <span class="json-key">"pronunciation"</span>: <span class="json-str">"MENSH"</span>,
+  <span class="json-key">"example"</span>: <span class="json-str">"He stayed late to help clean up — what a mensch."</span>,
+  <span class="json-key">"literal"</span>: <span class="json-str">"person"</span>,
+  <span class="json-key">"entered_english"</span>: true
 }</pre>
             </div>
         </div>
@@ -354,7 +364,7 @@
             <div class="endpoint-body">
                 <p class="endpoint-desc">Returns every word in the dataset.</p>
                 <pre>{
-  <span class="json-key">"count"</span>: 49,
+  <span class="json-key">"count"</span>: 167,
   <span class="json-key">"words"</span>: { <span class="json-str">…</span> }
 }</pre>
             </div>
@@ -400,8 +410,12 @@
                 const res = await fetch('/api/random');
                 if (!res.ok) throw new Error(res.statusText);
                 const data = await res.json();
-                document.getElementById('word').textContent = data.word;
-                document.getElementById('definition').textContent = data.definition;
+                document.getElementById('word').textContent =
+                    data.yiddish ? `${data.word} — ${data.yiddish}` : data.word;
+                let desc = data.definition;
+                if (data.pronunciation) desc = `[${data.pronunciation}] ` + desc;
+                if (data.example) desc += ` • "${data.example}"`;
+                document.getElementById('definition').textContent = desc;
             } catch {
                 document.getElementById('word').textContent = 'oy vey';
                 document.getElementById('definition').textContent = 'Something went wrong!';
