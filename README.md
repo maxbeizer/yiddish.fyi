@@ -66,7 +66,12 @@ Got a word we're missing? We'd kvell if you submitted a PR!
 
 ## Deployment — you want to run this yourself? Chutzpah! We love it.
 
-Pushing to `main` deploys automatically via Cloudflare Pages CI/CD. That's it. No commands, no mishegoss.
+Pushing to `main` deploys the site automatically via Cloudflare Pages CI/CD.
+
+When `worker.js` changes, deploy the API Worker too:
+```bash
+npx wrangler deploy
+```
 
 ## Local Development
 

@@ -1,6 +1,4 @@
-name = "yiddish-api"
+name = "yiddish-fyi"
 main = "worker.js"
 compatibility_date = "2026-04-21"
-
-[env.production]
-route = "yiddish.fyi/api/*"
+routes = ["yiddish.fyi/api", "yiddish.fyi/api/*"]
